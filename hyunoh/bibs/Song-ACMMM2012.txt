@@ -1,0 +1,6 @@
+@inproceedings{Song-ACMMM2012,
+	title = "Detection bank: an object detection based video representation for multimedia event recognition",
+	booktitle = "ACM Multimedia",
+	year = "2012",
+	author = "Tim Althoff and Hyun Oh Song and Trevor Darrell",
+}

@@ -1,0 +1,7 @@
+@inproceedings{
+  moon2022preemptive,
+  title={Preemptive Image Robustification for Protecting Users against Man-in-the-Middle Adversarial Attacks},
+  author={Seungyong Moon and Gaon An and Hyun Oh Song},
+  booktitle={AAAI Conference on Artificial Intelligence},
+  year={2022}
+}

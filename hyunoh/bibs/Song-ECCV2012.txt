@@ -1,0 +1,6 @@
+@inproceedings {Song-ECCV2012,
+	title = "Sparselet Models for Efficient Multiclass Object Detection",
+	booktitle = "European Conference on Computer Vision (ECCV)",
+	year = "2012",
+	author = "Hyun Oh Song and Stefan Zickler and Tim Althoff and Ross Girshick and Mario Fritz and Christopher Geyer and Pedro Felzenszwalb and Trevor Darrell",
+}

@@ -1,0 +1,6 @@
+@inproceedings{kim2023efficient,
+      title={Efficient Latency-Aware CNN Depth Compression via Two-Stage Dynamic Programming}, 
+      author={Kim, Jinuk and Jeong, Yeonwoo and Lee, Deokjae and Song, Hyun Oh},
+      booktitle = {International Conference on Machine Learning (ICML)},
+      year={2023}
+}

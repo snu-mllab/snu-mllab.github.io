@@ -1,0 +1,5 @@
+@inproceedings{song14slsvm,
+  Author    = {Hyun Oh Song and Yong Jae Lee and Stefanie Jegelka and Trevor Darrell},
+  Title     = {Weakly-supervised Discovery of Visual Pattern Configurations},
+  Booktitle = {Neural Information Processing Systems (NIPS)},
+  Year      = {2014}}

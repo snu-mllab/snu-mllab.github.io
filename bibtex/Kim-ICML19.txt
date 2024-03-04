@@ -1,0 +1,5 @@
+@inproceedings{kimICML19,
+  author    = {Hyoungseok Kim and Jaekyeom Kim and Yeonwoo Jeong and Sergey Levine and Hyun Oh Song},
+  title     = {EMI: Exploration with Mutual Information},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  year      = {2019}}

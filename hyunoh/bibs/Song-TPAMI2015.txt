@@ -1,0 +1,12 @@
+@article{song2015sparselet,
+  Author    = {Hyun Oh Song and
+               Ross Girshick and
+               Stefan Zickler and
+               Christopher Geyer and 
+               Pedro Felzenszwalb and
+               Trevor Darrell},
+  Title     = {Generalized Sparselet Models for Real-Time Multiclass Object Recognition},
+  Volume    = {37},
+  Number    = {5},
+  Journal   = {Pattern Analysis and Machine Intelligence},
+  Year      = {2015}}

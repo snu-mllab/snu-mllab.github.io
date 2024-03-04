@@ -1,0 +1,6 @@
+@inproceedings{kimICML20,
+  title= {Puzzle Mix: Exploiting Saliency and Local Statistics for Optimal Mixup},
+  author = {Kim, Jang-Hyun and Choo, Wonho and Song, Hyun Oh},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  year = {2020}
+}

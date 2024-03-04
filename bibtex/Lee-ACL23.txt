@@ -1,0 +1,6 @@
+@inproceedings{leeACL23,
+    title = "Query-Efficient Black-Box Red Teaming via Bayesian Optimization",
+    author= "Deokjae Lee and JunYeong Lee and Jung-Woo Ha and Jin-Hwa Kim and Sang-Woo Lee and Hwaran Lee and Hyun Oh Song",
+    booktitle = "Annual Meeting of the Association for Computational Linguistics (ACL)",
+    year = "2023",
+}

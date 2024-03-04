@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Sparselet Models for Efficient Multiclass Object Detection</title>
+</head>
+<body>
+<div id="layout-content">
+<div id="toptitle">
+<h1>Sparselet Models for Efficient Multiclass Object Detection</h1>
+<div id="subtitle">(Real-Time Multiclass Object Recognition on a Laptop Computer)</div>
+</div>
+<h2>Abstract</h2>
+<p>We develop an intermediate representation for deformable part models and show that this representation has favorable performance characteristics for multi-class problems when the number of classes is high. Our model uses sparse coding of part filters to represent each filter as a sparse linear combination of shared dictionary elements. This leads to a universal set of parts that are shared among all object classes. Re- construction of the original part filter responses via sparse matrix-vector product reduces computation relative to conventional part filter convo- lutions. Our model is well suited to a parallel implementation, and we report a new GPU DPM implementation that takes advantage of sparse coding of part filters. The speed-up offered by our intermediate repre- sentation and parallel computation enable real-time DPM detection of 20 different object classes on a laptop computer. <br />
+</p>
+<h2>Demo Video</h2>
+<ul>
+<iframe width="640" height="360" src="http://www.youtube.com/embed/BmE1fve6vOs" frameborder="0" allowfullscreen></iframe> <br />
+<a href="sparselets-demo.mp4">mp4</a>
+</p>
+</ul>
+<h2>References</h2>
+<p>Hyun Oh Song, Stefan Zickler,Tim Althoff, Ross Girshick, Mario Fritz,<br /> Christopher Geyer, Pedro Felzenszwalb, Trevor Darrell<br />
+Sparselet Models for Efficient Multiclass Object Detection<br />
+Proceedings of ECCV 2012.<br />
+<a href="sparselets-eccv.pdf">pdf</a></p>
+
+<div id="footer">
+<div id="footer-text">
+Page generated 2012-06-25 18:19:35 PDT, by <a href="http://jemdoc.jaboc.net/">jemdoc</a>.
+</div>
+</div>
+</div>
+</body>
+</html>

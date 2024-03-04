@@ -1,0 +1,6 @@
+@inproceedings{Song-ICML2013,
+	title = "Discriminatively Activated Sparselets",
+	booktitle = "International Conference on Machine Learning (ICML)",
+	year = "2013", 
+	author = "Ross Girshick and Hyun Oh Song and Trevor Darrell",
+}

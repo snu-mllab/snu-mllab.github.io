@@ -1,0 +1,5 @@
+@inproceedings{song15TASE,
+  Author    = {Hyun Oh Song and Mario Fritz and Daniel Goehring and Trevor Darrell},
+  Title     = {Learning to detect visual grasp affordance},
+  Booktitle = {IEEE Transactions on Automation Science and Engineering (TASE)},
+  Year      = {2015}}

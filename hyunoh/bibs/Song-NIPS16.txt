@@ -1,0 +1,6 @@
+@inproceedings{domaintransduction,
+  title={Learning Transferrable Representations for Unsupervised Domain Adaptation},
+  author={Ozan Sener and Hyun Oh Song and Ashutosh Saxena and Silvio Savarese},
+  booktitle={NIPS},
+  year={2016}
+}

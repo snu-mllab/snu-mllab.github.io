@@ -1,0 +1,6 @@
+@inproceedings{Song-ICCV2011,
+	title = "Visual Grasp Affordances From Appearance-Based Cues",
+	booktitle = "IEEE Workshop on  Challenges and Opportunities in Robot Perception at ICCV",
+	year = "2011",
+	author = "Hyun Oh Song and Mario Fritz and Chunhui Gu and Trevor Darrell",
+}

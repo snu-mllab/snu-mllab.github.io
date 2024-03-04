@@ -1,0 +1,706 @@
+<!DOCTYPE HTML>
+<!--
+	Introspect by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+<head>
+    <title>Blog - MLLAB at SNU</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+<link rel="stylesheet" href="assets/css/owl.carousel.css"/>
+
+<link rel="stylesheet" href="assets/css/owl.theme.default.css"/>
+
+<link rel="stylesheet" href="assets/css/main.css?v=0.075"/>
+
+<script type="text/javascript">
+      var loc = window.location.href+'';
+    // Comment away this part when running python app.py
+      if (loc.indexOf('http://')==0){
+          window.location.href = loc.replace('http://','https://');
+      }
+    // 
+
+      if (document.location.pathname == '/~hyunoh' || document.location.pathname.startsWith('/~hyunoh/')) {
+          document.location.pathname = '/hyunoh/';
+      }
+
+</script>
+</head>
+<body>
+
+<!-- Header -->
+<header id="header">
+    <div class="inner header_inner">
+        <a href="." class="logo"><img class="logo-image" src="./images/snu_logo_white.png" />&nbsp; <img class="logo-image" src="./images/mllab-logo-new.png" /></a>
+        <nav id="nav">
+            
+            <a href="." class="">Home</a>
+            
+            <a href="people.html" class="">People</a>
+            
+            <a href="publications.html" class="">Publications</a>
+            
+            <a href="courses.html" class="">Courses</a>
+            
+            <a href="blog.html" class="current">Blog</a>
+            
+        </nav>
+    </div>
+</header>
+<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+<!-- Main -->
+<section id="main">
+    <div class="inner">
+        <header class="major special">
+            <!-- <h1>Blog</h1> -->
+            <h1><br></h1>
+        </header>
+
+        <br/>
+
+        <section class="entry">
+            <span class="entry-theme-blog">
+                <span class="entry-theme-blog-head">
+                    <span class="entry-theme-blog-title">
+                        <h2>Puzzle Mix: Exploiting Saliency and Local Statistics for Optimal Mixup</h2>
+                    </span>
+                    <span class="entry-theme-blog-date">
+                        <p>August 27, 2020</p>
+                    </span>
+                    <span class="entry-theme-blog-author">
+                        <p>Article by Jang-Hyun Kim and Wonho Choo</p>
+                    </span>
+                </span>
+                <img class="image blog-image" src="./images/posts/kim-ICML2020/animation.gif"/>
+                
+                    
+                    
+                    
+                        
+                            <p>Deep neural networks become the bedrock of modern AI tasks such as object recognition, speech, natural language processing, and reinforcement learning. However, these models are known to memorize the training data and make overconfident predictions often resulting in degraded generalization performance on test examples [Zhang2016]. Data augmentation approaches aim to alleviate some of these issues by improving the model generalization performance [Bishop 2006].</p>
+                            <br/>
+                        
+                            <p>Recently, a line of new data augmentation techniques called <em>mixup</em> has been proposed [Zhang2018]. These methods mainly focus on creating previously unseen virtual mixup examples by interpolating a pair of given data. In this article, we will cover these methods with our paper &ldquo;Puzzle Mix: Exploiting Saliency and Local Statistics for Optimal mixup&rdquo;.</p>
+                            <br/>
+                        
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                        <br>
+                        <h3>Mixup</h3>
+                        <br>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                        
+                            <p><em>Mixup</em> mainly targets to alleviate the over-confidence issue of deep neural networks [Zhang2018]. The general neural networks trained by <a href="https://en.wikipedia.org/wiki/Empirical_risk_minimization">empirical risk minimization</a> has high prediction probabilities even for the unseen inputs or wrong predictions. Zhang et al. proposed to train networks with convex combinations of data. Specifically, for the given input and label pairs \((x_1, y_1)\) and \((x_2, y_2)\), mixup generates</p>
+                            <br/>
+                        
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    <img class="image blog-image" style="max-width:100%;width:40%" src="./images/posts/kim-ICML2020/formula1.jpg"/>
+                    <p style="color:grey;text-align:center;font-size:90%"></p>
+                    <br>
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                        
+                            <p>for a mixing ratio \(\lambda\) in \([0, 1]\). By training networks with mixup data, we can improve the networks' generalization performance on various tasks, including image classification and speech recognition. In addition, mixup improves the adversarial robustness of the networks and stabilizes the training of networks.</p>
+                            <br/>
+                        
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                        
+                            <p>Following the firstly suggested mixup technique, called <em>input mixup</em>, various variants are suggested. Verma et al. proposed <em>manifold mixup</em> [Verma2019], which performs input mixup with the hidden representation of data, and Yun et al. proposed <em>CutMix</em> [Yun2019] performing cut-and-paste of a rectangular box of an image.</p>
+                            <br/>
+                        
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    <img class="image blog-image" style="max-width:100%;width:60%" src="./images/posts/kim-ICML2020/Mixup (Base).jpg"/>
+                    <p style="color:grey;text-align:center;font-size:90%">Image samples of existing mixup methods. Input mixup does not preserve local statistics (e.g., color), and CutMix does not preserve salient information.</p>
+                    <br>
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                        
+                            <p>However, the existing mixup methods lack some considerations and can give false supervisory signals to the networks. For example, input mixup does not preserve color information of data, and CutMix can delete informative regions of data. The proposed <em>Puzzle Mix</em> overcomes these issues by considering saliency and local statistics of data. </p>
+                            <br/>
+                        
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                        <br>
+                        <h3>Puzzle Mix</h3>
+                        <br>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                        
+                            <p><em>Puzzle Mix</em> performs mixup by masking each input and transport salient regions of inputs over masks. The following is an image sample of Puzzle Mix.</p>
+                            <br/>
+                        
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    <img class="image blog-image" style="max-width:100%;width:60%" src="./images/posts/kim-ICML2020/Mixup (Puzzle).jpg"/>
+                    <p style="color:grey;text-align:center;font-size:90%">Puzzle Mix image sample.</p>
+                    <br>
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                        
+                            <p>Formally, for given \(n\)-dimensional data \(x_1\) and \(x_2\), our mixup formula is as follows:</p>
+                            <br/>
+                        
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    <img class="image blog-image" style="max-width:100%;width:35%" src="./images/posts/kim-ICML2020/formula2.jpg"/>
+                    <p style="color:grey;text-align:center;font-size:90%"></p>
+                    <br>
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                        
+                            <p>where \(z\) is a \(n\)-dimensional mask having values in \([0, 1]\), and \(\Pi_k\) is a transportation plan which is a \(n \times n\) binary matrix. Our main objective is to optimize the mask \(z\) and the transportation plans maximizing salient information of each data while preserving local statistics. Before we move onto the detailed description of our objective, we briefly introduce the effects of Puzzle Mix.</p>
+                            <br/>
+                        
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    <img class="image blog-image" style="max-width:100%;width:100%" src="./images/posts/kim-ICML2020/Stat.jpg"/>
+                    <p style="color:grey;text-align:center;font-size:90%">Statistics of various mixup data along mixing ratios in \([0,1]\). <b>Saliency</b> represents remained saliency information in the mixed data. <b>Total variation</b> is measured in each mixup data. <b>Loss</b> means cross-entropy loss of the pretrained model on mixup data and <b>Top-k acc.</b> means the prediction accuracy of the model on the mixup data.</p>
+                    <br>
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                        
+                            <p>As we can see from the above figure, Puzzle Mix data preserves saliency information (Saliency) while preserving local statistics (Total variation). Consequently, the Puzzle Mix data is more consistent with the target soft label than other mixup methods (Loss, Top-k acc.).</p>
+                            <br/>
+                        
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                        <br>
+                        <h3>Objective and Algorithm</h3>
+                        <br>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                        
+                            <p>As we mentioned, our objective is to find optimal mask and transportation plans maximizing saliency while maintaining local statistics. To solve the problem, we first discretize the mask value, and we denote the discretized range as \(\mathcal{L}\). For a given saliency map \(s_k\) of each data, we solve the following optimization problem to obtain the optimal mask and transportation plans.</p>
+                            <br/>
+                        
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    <img class="image blog-image" style="max-width:100%;width:75%" src="./images/posts/kim-ICML2020/formula3.jpg"/>
+                    <p style="color:grey;text-align:center;font-size:90%"></p>
+                    <br>
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                        
+                            <p>The first term of the objective represents the negative of remained saliency information. The next term is a penalty for local statistics, \(\psi\) for the smoothness of the mask labels and \(\phi\) for the smoothness of the mixup data.</p>
+                            <br/>
+                        
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    <img class="image blog-image" style="max-width:100%;width:100%" src="./images/posts/kim-ICML2020/Obj-1.jpg"/>
+                    <p style="color:grey;text-align:center;font-size:90%">Puzzle Mix images with increasing smoothness coefficient \(\beta\) and \(\gamma\).</p>
+                    <br>
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                        
+                            <p>We also introduce a prior term \(p\) to control the mixing ratio of inputs.</p>
+                            <br/>
+                        
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    <img class="image blog-image" style="max-width:100%;width:100%" src="./images/posts/kim-ICML2020/Obj-2.jpg"/>
+                    <p style="color:grey;text-align:center;font-size:90%">Puzzle Mix images with increasing mixing ratio \(\lambda\).</p>
+                    <br>
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                        
+                            <p>Finally, we penalize the transport cost to preserve local statistics of data. To solve the minimization problem, we propose an alternating algorithm between a mask \(z\) and transportation plans.</p>
+                            <br/>
+                        
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                        <br>
+                        <h4>1) Optimize Mask</h4>
+                        <br>
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                        
+                            <p>The terms related to a mask are the saliency, smoothness, and mixing ratio prior terms. We can represent the \(\ell_1\) norm in the saliency term as a unary term \(u_i\), and the objective with respect to a mask is represented as follows:</p>
+                            <br/>
+                        
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    <img class="image blog-image" style="max-width:100%;width:85%" src="./images/posts/kim-ICML2020/formula4.jpg"/>
+                    <p style="color:grey;text-align:center;font-size:90%"></p>
+                    <br>
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                        
+                            <p>We define the pairwise smoothness terms as submodular functions and apply a submodular minimization algorithm, alpha-beta swap [Boykov2001], to obtain the optimal mask \(z\).</p>
+                            <br/>
+                        
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                        <br>
+                        <h4>2) Optimize Transportation Plan</h4>
+                        <br>
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                        
+                            <p>The objective with respect to transportation plans becomes</p>
+                            <br/>
+                        
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    <img class="image blog-image" style="max-width:100%;width:75%" src="./images/posts/kim-ICML2020/formula5.jpg"/>
+                    <p style="color:grey;text-align:center;font-size:90%"></p>
+                    <br>
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                        
+                            <p>Note that, the above problem is separable for each transportation plan \(\Pi_k\), and we perform the optimization independently for each index. We propose a GPU based algorithm to obtain the optimal transportation plans, and please refer to our paper for a detailed description of the algorithm.</p>
+                            <br/>
+                        
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                        <br>
+                        <h4>3) Adversarial Training and Regularization</h4>
+                        <br>
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                        
+                            <p>We obtain the saliency map \(s_k\) by calculating the gradients of loss with respect to inputs and taking \(\ell_2\) norm across the input channels. We utilize gradient information to improve the Puzzle Mix training algorithm. First, we propose an adversarial training with mixup data by adding the adversarial perturbation on each input before mixup. Second, we regularize the training objective by using the gradient information with respect to the network weights on clean input data:</p>
+                            <br/>
+                        
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    <img class="image blog-image" style="max-width:100%;width:60%" src="./images/posts/kim-ICML2020/formula6.jpg"/>
+                    <p style="color:grey;text-align:center;font-size:90%"></p>
+                    <br>
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                        
+                            <p>where \(\ell\) is a training objective, and \(\theta\) represents the network weights.</p>
+                            <br/>
+                        
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                        <br>
+                        <h3>Experimental Results</h3>
+                        <br>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                        
+                            <p>We test the proposed Puzzle Mix on the image classification task. In this article, we provide the results on CIFAR-100 with PreActResNet-18 and ImageNet with ResNet-50.</p>
+                            <br/>
+                        
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    <img class="image blog-image" style="max-width:100%;width:60%" src="./images/posts/kim-ICML2020/Exp-1.jpg"/>
+                    <p style="color:grey;text-align:center;font-size:90%">Performance on CIFAR-100 with PreActResNet-18. Note, <em>half</em> represents the model trained with the same number of network forward calls and adv represents the adversarially trained model.</p>
+                    <br>
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    <img class="image blog-image" style="max-width:100%;width:40%" src="./images/posts/kim-ICML2020/Exp-2.jpg"/>
+                    <p style="color:grey;text-align:center;font-size:90%">Performance on ImageNet with PreActResNet-18.</p>
+                    <br>
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                        
+                            <p>As we can see from the above tables, Puzzle Mix outperforms mixup baselines at generalization and adversarial robustness at the same time with a large margin on various datasets and models.</p>
+                            <br/>
+                        
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                        <br>
+                        <h3>Conclusion</h3>
+                        <br>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                        
+                            <p>In the paper, we presented Puzzle Mix, a mixup augmentation method for optimally leveraging the saliency information while respecting the underlying local statistics of the data. Puzzle Mix outperforms other mixup baseline methods both in the generalization performance and the robustness against adversarial perturbations by a large margin on various datasets. We believe Puzzle Mix will guide interesting future research, such as replacing the transport process or optimizing what to mix.</p>
+                            <br/>
+                        
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                        <h4>Citation</h4>
+                        
+                            <pre><code>@inproceedings{kimICML20, 
+	title= {Puzzle Mix: Exploiting Saliency and Local Statistics for Optimal Mixup}, 
+	author = {Kim, Jang-Hyun and Choo, Wonho and Song, Hyun Oh}, 
+	booktitle = {International Conference on Machine Learning (ICML)}, 
+	year = {2020}
+}</code></pre>
+                        
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                        <h4>Open Source Code</h4>
+                        
+                            <p><a href="https://github.com/snu-mllab/PuzzleMix">https://github.com/snu-mllab/PuzzleMix</a></p>
+                            <br/>
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                        <h4>Reference</h4>
+                        
+                            <p style="font-size:small">[Bishop2006] Pattern recognition and machine learning. springer, 2006.</p>
+                        
+                            <p style="font-size:small">[Boykov2001] Fast approximate energy minimization via graph cuts. IEEE Transactions on pattern analysis and machine intelligence, 23(11): 1222–1239, 2001.</p>
+                        
+                            <p style="font-size:small">[Verma2019] Manifold Mixup: Better Representations by Interpolating Hidden States. ICML, 2019.</p>
+                        
+                            <p style="font-size:small">[Yun2019] CutMix: Regularization Strategy to Train Strong Classifiers with Localizable Features. ICCV, 2019.</p>
+                        
+                            <p style="font-size:small">[Zhang2016] Understanding deep learning requires rethinking generalization. ICLR, 2016.</p>
+                        
+                            <p style="font-size:small">[Zhang2018] mixup: Beyond empirical risk minimization. ICLR, 2018.</p>
+                        
+                    
+                
+            </span>
+        </section>
+    </div>
+</section>
+
+
+<!-- Footer -->
+<section id="footer">
+    <div class="inner">
+        <strong>MLLAB, Computer Science and Engineering, Seoul National University</strong>
+        </br>
+        
+        <a class="icon fa-map-marker"><span class="label">Location</span></a> Samsung Electronics-Seoul National University Research Center (Building 944),<br> 1, Gwanak-ro, Gwanak-gu, Seoul 08826, Republic of Korea
+        <div class="copyright">
+            &copy; SNU MLLAB Design: <a href="https://templated.co/">TEMPLATED</a>. Images <a
+                href="https://unsplash.com/">Unsplash</a>
+        </div>
+    </div>
+</section>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</body>
+</html>

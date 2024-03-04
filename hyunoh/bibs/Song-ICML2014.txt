@@ -1,0 +1,7 @@
+@inproceedings{song14slsvm,
+  Author    = {Hyun Oh Song and Ross Girshick and Stefanie Jegelka and 
+               Julien Mairal and Zaid Harchaoui and Trevor Darrell},
+  Title     = {On learning to localize objects with minimal supervision},
+  Booktitle = {Proceedings of the International
+               Conference on Machine Learning ({ICML})},
+  Year      = {2014}}
