@@ -1,0 +1,6 @@
+@inproceedings{lee24greedy,
+      title={Training Greedy Policy for Proposal Batch Selection in Expensive Multi-Objective Combinatorial Optimization},
+      author={Lee, Deokjae and Song, Hyun Oh and Cho, Kyunghyun},
+      booktitle = {International Conference on Machine Learning (ICML)},
+      year={2024}
+}

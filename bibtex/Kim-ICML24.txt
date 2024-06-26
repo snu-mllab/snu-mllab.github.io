@@ -1,0 +1,6 @@
+@inproceedings{kim2024layermerge,
+      title={LayerMerge: Neural Network Depth Compression through Layer Pruning and Merging}, 
+      author={Kim, Jinuk and El Halabi, Marwa and Ji, Mingi and Song, Hyun Oh},
+      booktitle = {International Conference on Machine Learning (ICML)},
+      year={2024}
+}
