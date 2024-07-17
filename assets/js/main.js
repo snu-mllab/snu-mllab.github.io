@@ -5,7 +5,7 @@
 */
 
 (function($) {
-	skel.breakpoints({
+	breakpoints({
 		xlarge:	'(max-width: 1680px)',
 		large:	'(max-width: 1280px)',
 		medium:	'(max-width: 980px)',
@@ -31,12 +31,14 @@
 			$('form').placeholder();
 
 		// Prioritize "important" elements on medium.
-			skel.on('+medium -medium', function() {
+			f = function() {
 				$.prioritize(
 					'.important\\28 medium\\29',
 					skel.breakpoint('medium').active
 				);
-			});
+			}
+			breakpoints.on('+medium', f);
+			breakpoints.on('-medium', f);
 
 		// Off-Canvas Navigation.
 
@@ -61,10 +63,10 @@
 						side: 'left'
 					});
 
-			// Fix: Remove transitions on WP<10 (poor/buggy performance).
-				if (skel.vars.os == 'wp' && skel.vars.osVersion < 10)
-					$('#navPanel')
-						.css('transition', 'none');
+			// // Fix: Remove transitions on WP<10 (poor/buggy performance).
+			// 	if (breakpoints.vars.os == 'wp' && breakpoints.vars.osVersion < 10)
+			// 		$('#navPanel')
+			// 			.css('transition', 'none');
 
 	});
 
