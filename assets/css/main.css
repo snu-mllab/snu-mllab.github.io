@@ -3396,6 +3396,7 @@
   #banner-bg {
 		background: url("../../images/main_building.png");
 		background-size: cover;
+        height: 110vh;
 		background-repeat: no-repeat;
         background-position: center;
 		z-index: 9999;
