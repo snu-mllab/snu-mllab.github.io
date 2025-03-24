@@ -3410,7 +3410,7 @@
 	#banner {
 		/* background-color: #e5474b; */
 		color: #ffffff;
-		padding: 19em 0 0 0;
+		padding: 15em 0 0 0;
 		/* background-color: #0c0c0c; */
 		text-align: center;
 		position: relative;
@@ -4242,7 +4242,10 @@
     }
 
     #main-content {
-      position: relative;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
     }
 
     .pagination {
