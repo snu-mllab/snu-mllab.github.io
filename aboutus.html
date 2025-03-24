@@ -77,22 +77,42 @@
         </h2>
         <p style="margin-bottom: 10px;">
             <ul style="margin-bottom: 10px;">
-                <li style="margin-bottom: 10px;">
-                    <span style="font-weight: bold; color:black">LLM / Diffusion Model Compression</span>: 
-                    <a style="font-weight: bold;" href="https://janghyun1230.github.io/memory/">Compressed Context Memory</a>
-                    fine-tunes Transformer LLMs to compress keys and values, reducing KV cache memory requirements by 5× during inference. 
-                    <a style="font-weight: bold;" href="https://jusjinuk.me/blog/layermerge/">LayerMerge</a> enhances the efficiency of diffusion model inference by pruning and merging nonlinear and convolutional layers. 
+                <li>
+                    <span style="font-weight: bold; color:black">LLM / Diffusion Model Compression:</span> 
+                    <ul style="margin-bottom: 10px;">
+                        <li>
+                            <a style="font-weight: bold;" href="https://janghyun1230.github.io/memory/">Compressed Context Memory</a> 
+                            fine-tunes Transformer LLMs to compress keys and values, reducing KV cache memory requirements by 5× during inference. 
+                        </li>
+                        <li>
+                            <a style="font-weight: bold;" href="https://jusjinuk.me/blog/layermerge/">LayerMerge</a> enhances the efficiency of diffusion model inference by pruning and merging nonlinear and convolutional layers. 
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span style="font-weight:bold; color:black">RL Algorithms:</span> 
+                    <ul style="margin-bottom: 10px;">
+                        <li>
+                            <a href="https://github.com/snu-mllab/DPPO" style="font-weight: bold;">DPPO</a> trains a policy directly using human preference data without reward modeling .
+                        </li>
+                        <li>
+                            <a href="https://github.com/snu-mllab/Achievement-Distillation" style="font-weight: bold;">Achievement Distillation</a> learns complex subtask hierarchies with minimal supervision for vision-based RL agents in Minecraft-like environments.
+                        </li>
+                        <li>
+                            <a href="https://github.com/snu-mllab/DCPG" style="font-weight: bold;">DCPG</a> analyzes the value function learning of RL agents in visually complex environments and develops a phasic algorithm to train a robust value function.
+                        </li>
+                    </ul>
                 </li>
                 <li style="margin-bottom: 10px;">
-                    <span style="font-weight:bold; color:black">RL Algorithm</span>: 
-                    <a href="https://github.com/snu-mllab/DPPO?tab=readme-ov-file" style="font-weight: bold;">DPPO</a> trains a policy directly using preference data without reward modeling .
-                    <a href="https://github.com/snu-mllab/Achievement-Distillation" style="font-weight: bold;">Achievement Distillation</a> learns complex subtask hierarchies with minimal supervision for vision-based RL agents in Minecraft-like environments.
-                    <a href="https://github.com/snu-mllab/DCPG" style="font-weight: bold;">DCPG</a> analyzes the value function learning of RL agents in visually complex environments and develops a phasic algorithm to train a robust value function.
-                </li>
-                <li style="margin-bottom: 10px;">
-                    <span style="font-weight: bold; color: black">Black-Box Optimization</span>: 
-                    <a style="font-weight: bold;" href="https://github.com/snu-mllab/Bayesian-Red-Teaming">Bayesian Red Teaming</a> identifies failures in black-box models, including ChatGPT and Stable-Diffusion, by sampling and editing user inputs with Gaussian process surrogate models.
-                    <a style="font-weight: bold;" href="https://github.com/snu-mllab/GreedyPolicyForMOCO">Greedy Policy</a> proposes a combinatorial optimization algorithm that uses neural networks to efficiently select proposal batches for black-box problems, such as protein and molecular design. 
+                    <span style="font-weight: bold; color: black">Black-Box Optimization:</span>
+                    <ul style="margin-bottom: 10px;">
+                        <li>
+                            <a style="font-weight: bold;" href="https://github.com/snu-mllab/Bayesian-Red-Teaming">Bayesian Red Teaming</a> identifies failures in black-box models, including ChatGPT and Stable-Diffusion, by sampling and editing user inputs with Gaussian process surrogate models.
+                        </li>
+                        <li>
+                            <a style="font-weight: bold;" href="https://github.com/snu-mllab/GreedyPolicyForMOCO">Greedy Policy</a> proposes a combinatorial optimization algorithm that uses neural networks to efficiently select proposal batches for black-box problems, such as protein and molecular design. 
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </p>
