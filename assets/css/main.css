@@ -3395,10 +3395,9 @@
 
   #banner-bg {
 		background: url("../../images/main_building.png");
-    background-position: 0% 20%;
 		background-size: cover;
 		background-repeat: no-repeat;
-    background-position: center;
+        background-position: center;
 		z-index: 9999;
   }
   .banner-bg2 {
