@@ -1,0 +1,495 @@
+
+<!DOCTYPE HTML>
+<!--
+	Introspect by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+
+    <title>Leaderboard - MLLAB at SNU</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+<link rel="stylesheet" href="assets/css/owl.carousel.css"/>
+
+<link rel="stylesheet" href="assets/css/owl.theme.default.css"/>
+
+<link rel="stylesheet" href="assets/css/main.css?v=0.075"/>
+
+<script type="text/javascript">
+      var loc = window.location.href+'';
+    // Comment away this part when running on local (python app.py)
+      if (loc.indexOf('http://')==0){
+          window.location.href = loc.replace('http://','https://');
+      }
+    // 
+
+      if (document.location.pathname == '/~hyunoh' || document.location.pathname.startsWith('/~hyunoh/')) {
+          document.location.pathname = '/hyunoh/';
+      }
+
+</script>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/vuetify@3.5.0/dist/vuetify.min.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="assets/dl-2025/vuetify-project.css"> -->
+</head>
+<body>
+
+<!-- Header -->
+<header id="header">
+    <div class="inner header_inner">
+        <a href="." class="logo"><img class="logo-image" src="./images/snu_logo_white.png" />&nbsp; <img class="logo-image" src="./images/mllab-logo-new.png" /></a>
+        <nav id="nav">
+            
+            <a href="." class="">Home</a>
+            
+            <a href="aboutus.html" class="">About Us</a>
+            
+            <a href="people.html" class="">People</a>
+            
+            <a href="publications.html" class="">Publications</a>
+            
+            <a href="courses.html" class="">Courses</a>
+            
+            <a href="gallery.html" class="">Gallery</a>
+            
+            <a href="leaderboard.html" class="current">Leaderboard</a>
+            
+        </nav>
+    </div>
+</header>
+<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+<section id="main">
+    <div class="inner">
+        <header class="major special">
+            <h1>Leaderboard</h1>
+        </header>
+        <div class="container my-5">
+            <div class="card mb-4">
+            <div class="card-body">
+            <h2 class="card-title" style="border-bottom: 2px #bfbfbf solid; line-height: 1.5 !important;">Basics of Deep Learning 2025</h2>
+            <p class="card-text">
+                Welcome to the Basics of Deep Learning 2025 page!
+                This is the leaderboard for the class term project.
+                The leaderboard is updated in real-time as teams submit their solutions.</p>
+            <p class="card-text">
+                You can check the leaderboard of best score for each team,
+                the queue of jobs that are being processed, and the last submission information made by each team.
+            </p>
+            </div>
+            </div>
+        </div>
+
+        <div class="container my-5">
+            <div class="card mb-4">
+            <div class="card-body">
+            <h3 class="card-title" style="border-bottom: 2px #bfbfbf solid; line-height: 1.5 !important;">Leaderboard</h3>
+            <table class="table table-striped table-bordered" style="text-align: left;">
+                <thead class="table-dark">
+                <tr style="text-align: center;">
+                    <th style="text-align: center;">Rank</th>
+                    <th style="text-align: left;">Team</th>
+                    <th style="text-align: left;">Score</th>
+                    <th style="text-align: left;">Finished</th>
+                </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                <!-- JS will insert rows here -->
+                </tbody>
+            </table>
+              <div class="d-flex justify-content-end align-items-center gap-2 mt-3">
+                <div>
+                  <select id="best-page-size" class="form-select form-select-sm d-inline-block w-auto">
+                    <option value="5">5</option>
+                    <option value="10" selected>10</option>
+                    <option value="20">20</option>
+                  </select>
+                </div>
+
+                <a id="best-prev-btn" class="btn btn-outline-secondary btn-sm" role="button">
+                    <i class="fa-solid fa-angle-left"></i>
+                </a>
+                <span>
+                    Page <span id="best-page-indicator">1</span> /
+                    <span id="best-total-pages">?</span>
+                </span>
+                <a id="best-next-btn" class="btn btn-outline-secondary btn-sm" role="button">
+                    <i class="fa-solid fa-angle-right"></i>
+                </a>
+              </div>
+            </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="container my-5">
+            <div class="card mb-4">
+            <div class="card-body">
+            <h3 class="card-title" style="border-bottom: 2px #bfbfbf solid; line-height: 1.5 !important;">Queue</h3>
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                <tr>
+                    <th style="text-align: center;">Job ID</th>
+                    <th>Team</th>
+                    <th>Status</th>
+                    <th>Submitted</th>
+                </tr>
+                </thead>
+                <tbody id="queue-body">
+                <!-- JS will insert rows here -->
+                </tbody>
+            </table>
+              <div class="d-flex justify-content-end align-items-center gap-2 mt-3">
+                <div>
+                  <select id="queue-page-size" class="form-select form-select-sm d-inline-block w-auto">
+                    <option value="5">5</option>
+                    <option value="10" selected>10</option>
+                    <option value="20">20</option>
+                  </select>
+                </div>
+
+                  <a id="queue-prev-btn" class="btn btn-outline-secondary btn-sm" role="button">
+                      <i class="fa-solid fa-angle-left"></i>
+                  </a>
+                  <span>
+                      Page <span id="queue-page-indicator">1</span> /
+                      <span id="queue-total-pages">?</span>
+                  </span>
+                  <a id="queue-next-btn" class="btn btn-outline-secondary btn-sm" role="button">
+                      <i class="fa-solid fa-angle-right"></i>
+                  </a>
+              </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="container my-5">
+            <div class="card mb-4">
+            <div class="card-body">
+            <h3 class="card-title" style="border-bottom: 2px #bfbfbf solid; line-height: 1.5 !important;">Last Submission</h3>
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                <tr>
+                    <th style="text-align: center;">Job ID</th>
+                    <th>Team</th>
+                    <th>Score</th>
+                    <th>Status</th>
+                    <th>Submitted</th>
+                </tr>
+                </thead>
+                <tbody id="last-submission-body">
+                <!-- JS will insert rows here -->
+                </tbody>
+            </table>
+              <div class="d-flex justify-content-end align-items-center gap-2 mt-3">
+                <div>
+                  <select id="last-page-size" class="form-select form-select-sm d-inline-block w-auto">
+                    <option value="5">5</option>
+                    <option value="10" selected>10</option>
+                    <option value="20">20</option>
+                  </select>
+                </div>
+                  <a id="last-prev-btn" class="btn btn-outline-secondary btn-sm" role="button">
+                      <i class="fa-solid fa-angle-left"></i>
+                  </a>
+                  <span>
+                      Page <span id="last-page-indicator">1</span> /
+                      <span id="last-total-pages">?</span>
+                  </span>
+                  <a id="last-next-btn" class="btn btn-outline-secondary btn-sm" role="button">
+                      <i class="fa-solid fa-angle-right"></i>
+                  </a>
+              </div>
+            </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+<!-- Footer -->
+<section id="footer">
+    <div class="inner">
+        <strong>MLLAB, Computer Science and Engineering, Seoul National University</strong>
+        </br>
+        
+        <a class="icon fa-map-marker"><span class="label">Location</span></a> Samsung Electronics-Seoul National University Research Center (Building 944),<br> 1, Gwanak-ro, Gwanak-gu, Seoul 08826, Republic of Korea
+        <div class="copyright">
+            &copy; SNU MLLAB Design: <a href="https://templated.co/">TEMPLATED</a>. Images <a
+                href="https://unsplash.com/">Unsplash</a>
+        </div>
+    </div>
+</section>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/breakpoints.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+let bestPage = 1;
+let bestPageSize = 10;
+let bestTotalPages = 1;
+
+let queuePage = 1;
+let queuePageSize = 10;
+let queueTotalPages = 1;
+
+let lastPage = 1;
+let lastPageSize = 10;
+let lastTotalPages = 1;
+
+const base_api_url = "http://carl.mllab.snu.ac.kr:9999";
+
+function update_leaderboard(data) {
+    const leaderboard = [];
+    scores = data.results;
+    scores.forEach(entry => {
+        const { team, score, finished } = entry;
+        const team_name = team.replace("team", "Team ");
+        leaderboard.push({ team: team_name, score, finished });
+    });
+    leaderboard.sort((a, b) => b.score - a.score);
+    const tbody = document.getElementById('leaderboard-body');
+    tbody.innerHTML = ''
+    const max_row = document.createElement('tr')
+    max_row.innerHTML = `
+        <td style="text-align: center; font-weight: bold;">-</td>
+        <td style="font-weight: bold;">Maximum</td>
+        <td style="font-weight: bold;">100</td>
+        <td style="font-weight: bold;">-</td>
+        `;
+    tbody.appendChild(max_row)
+
+    if (leaderboard.length === 0) {
+        const row = document.createElement('tr');
+        row.innerHTML = `<td colspan="4" class="text-center text-muted">No data available</td>`;
+        tbody.appendChild(row);
+    }
+
+    leaderboard.forEach((entry, index) => {
+        const rank = (bestPage - 1) * bestPageSize + index + 1
+        let bold = rank < 4 ? 'font-weight: bold;' : '';
+        let medal = ''
+        if (rank === 1) {
+            medal = `<i class="fa-solid fa-medal text-warning me-2" title="1st Place"></i>`
+
+        } else if (rank === 2) {
+            medal = `<i class="fa-solid fa-medal text-secondary me-2" title="2nd Place"></i>`
+        } else if (rank === 3) {
+            medal = `<i class="fa-solid fa-medal me-2" style="color: #cd7f32;" title="3rd Place"></i>`
+        } else {
+            medal = `<i class="fa-solid fa-medal me-2" style="visibility: hidden;"></i>`
+        }   
+        hidden_medal = `<i class="fa-solid fa-medal me-2" style="visibility: hidden;"></i>`
+
+        
+        const row = document.createElement('tr');
+        row.innerHTML = `
+        <td style="text-align: center; ${bold}">${medal}${rank}${hidden_medal}</td>
+        <td style="${bold}">${entry.team}</td>
+        <td style="${bold}">${entry.score}</td>
+        <td style="${bold}">${entry.finished}</td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+
+function update_queue(data) {
+    var queue = [];
+
+    queue_data = data.results;
+
+    queue_data.forEach(entry => {
+        const { team, status, submitted, job_id } = entry;
+        const team_name = team.replace("team", "Team ");
+        queue.push({ team: team_name, status, submitted, job_id });
+    });
+    queue.sort((a, b) => (Date.parse(b.submitted) - Date.parse(a.submitted)));
+    const tbody = document.getElementById('queue-body');
+    tbody.innerHTML = ''
+
+    if (queue.length === 0) {
+        const row = document.createElement('tr');
+        row.innerHTML = `<td colspan="4" class="text-center text-muted">No data available</td>`;
+        tbody.appendChild(row);
+    }
+
+
+    queue.forEach((entry, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+        <td style="text-align: center;">${entry.job_id}</td>
+        <td>${entry.team}</td>
+        <td>${entry.status}</td>
+        <td>${entry.submitted}</td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+
+function update_last_submission(data) {
+    const queue = [];
+    last_submission_data = data.results;
+    
+    last_submission_data.forEach(entry => {
+        const { team, score, timestamp, job_id, status } = entry;
+        const team_name = team.replace("team", "Team ");
+        const score_str = status != "Success" ? "N/A" : score;
+        queue.push({ team: team_name, score: score_str, timestamp, job_id, status });
+    });
+    queue.sort((a, b) => (Date.parse(b.timestamp) - Date.parse(a.timestamp)));
+    const tbody = document.getElementById('last-submission-body');
+    tbody.innerHTML = ''
+
+    if (queue.length === 0) {
+        const row = document.createElement('tr');
+        row.innerHTML = `<td colspan="5" class="text-center text-muted">No data available</td>`;
+        tbody.appendChild(row);
+    }
+
+
+    queue.forEach((entry, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+        <td style="text-align: center;">${entry.job_id}</td>
+        <td>${entry.team}</td>
+        <td>${entry.score}</td>
+        <td>${entry.status}</td>
+        <td>${entry.timestamp}</td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+
+function fetch_best_leaderboard() {
+  fetch(`${base_api_url}/api/leaderboard?page=${bestPage}&page_size=${bestPageSize}`)
+    .then(res => res.json())
+    .then(data => {
+      update_leaderboard(data);
+      bestTotalPages = data.page_num;
+
+      document.getElementById('best-page-indicator').textContent = bestPage;
+      document.getElementById('best-total-pages').textContent = bestTotalPages;
+
+      document.getElementById('best-prev-btn').disabled = data.previous === null;
+      document.getElementById('best-next-btn').disabled = data.next === null;
+      document.getElementById('best-prev-btn').classList.toggle('disabled', !data.previous)
+      document.getElementById('best-next-btn').classList.toggle('disabled', !data.next)
+    })
+    .catch(err => {
+      console.error('Failed to fetch best leaderboard:', err);
+    });
+}
+
+function fetch_queue() {
+  fetch(`${base_api_url}/api/queue?page=${queuePage}&page_size=${queuePageSize}`)
+    .then(res => res.json())
+    .then(data => {
+      update_queue(data);
+      queueTotalPages = data.page_num;
+
+      document.getElementById('queue-page-indicator').textContent = queuePage
+      document.getElementById('queue-total-pages').textContent = queueTotalPages
+
+      document.getElementById('queue-prev-btn').disabled = data.previous === null;
+      document.getElementById('queue-next-btn').disabled = data.next === null;
+      document.getElementById('queue-prev-btn').classList.toggle('disabled', !data.previous)
+      document.getElementById('queue-next-btn').classList.toggle('disabled', !data.next)
+    })
+    .catch(err => {
+      console.error('Failed to fetch best leaderboard:', err);
+    });
+}
+
+function fetch_last() {
+  fetch(`${base_api_url}/api/last_submission?page=${lastPage}&page_size=${lastPageSize}`)
+    .then(res => res.json())
+    .then(data => {
+      update_last_submission(data);
+      lastTotalPages = data.page_num;
+
+      document.getElementById('last-page-indicator').textContent = lastPage
+      document.getElementById('last-total-pages').textContent = lastTotalPages
+
+      document.getElementById('last-prev-btn').disabled = data.previous === null;
+      document.getElementById('last-next-btn').disabled = data.next === null;
+      document.getElementById('last-prev-btn').classList.toggle('disabled', !data.previous)
+      document.getElementById('last-next-btn').classList.toggle('disabled', !data.next)
+    })
+    .catch(err => {
+      console.error('Failed to fetch best leaderboard:', err);
+    });
+}
+
+document.getElementById('best-prev-btn').addEventListener('click', () => {
+  if (bestPage > 1) {
+    bestPage--;
+    fetch_best_leaderboard();
+  }
+});
+document.getElementById('best-next-btn').addEventListener('click', () => {
+  if (bestPage < bestTotalPages) {
+    bestPage++;
+    fetch_best_leaderboard();
+  }
+});
+document.getElementById('best-page-size').addEventListener('change', (e) => {
+  bestPageSize = parseInt(e.target.value)
+  bestPage = 1 // 페이지 초기화
+  fetch_best_leaderboard()
+})
+
+document.getElementById('queue-prev-btn').addEventListener('click', () => {
+  if (queuePage > 1) {
+    queuePage--;
+    fetch_queue();
+  }
+});
+document.getElementById('queue-next-btn').addEventListener('click', () => {
+  if (queuePage < queueTotalPages) {
+    queuePage++;
+    fetch_queue();
+  }
+});
+document.getElementById('queue-page-size').addEventListener('change', (e) => {
+  queuePageSize = parseInt(e.target.value)
+  queuePage= 1 // 페이지 초기화
+  fetch_queue();
+})
+
+document.getElementById('last-prev-btn').addEventListener('click', () => {
+  if (lastPage > 1) {
+    lastPage--;
+    fetch_last();
+  }
+});
+document.getElementById('last-next-btn').addEventListener('click', () => {
+  if (lastPage < lastTotalPages) {
+    lastPage++;
+    fetch_last();
+  }
+});
+document.getElementById('last-page-size').addEventListener('change', (e) => {
+  lastPageSize = parseInt(e.target.value)
+  lastPage = 1 // 페이지 초기화
+  fetch_last();
+})
+
+
+
+fetch_best_leaderboard();
+fetch_queue();
+fetch_last();
+
+</script>
+
+</body>
+</html>
