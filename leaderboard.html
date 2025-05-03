@@ -248,6 +248,12 @@ let lastTotalPages = 1;
 
 const base_api_url = "https://proxy-1040732334831.asia-northeast3.run.app";
 
+function compare_leaderboard(a, b) {
+    if (b.score - a.score != 0)
+        return b.score - a.score
+    return Date.parse(a.finished) - Date.parse(b.finished)
+ }
+
 function update_leaderboard(data) {
     const leaderboard = [];
     scores = data.results;
@@ -256,7 +262,7 @@ function update_leaderboard(data) {
         const team_name = team.replace("team", "Team ");
         leaderboard.push({ team: team_name, score, finished });
     });
-    leaderboard.sort((a, b) => b.score - a.score);
+    leaderboard.sort(compare_leaderboard);
     const tbody = document.getElementById('leaderboard-body');
     tbody.innerHTML = ''
     const max_row = document.createElement('tr')
