@@ -1,0 +1,6 @@
+@inproceedings{kim2025guidedquant,
+      title={GuidedQuant: Large Language Model Quantization via Exploiting End Loss Guidance}, 
+      author={Jinuk Kim and Marwa El Halabi and Wonpyo Park and Clemens JS Schaefer and Deokjae Lee and Yeonhong Park and Jae W. Lee and Hyun Oh Song},
+      booktitle = {International Conference on Machine Learning (ICML)},
+      year={2025},
+}
