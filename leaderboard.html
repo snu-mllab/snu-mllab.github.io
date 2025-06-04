@@ -93,7 +93,7 @@
                 <thead class="table-dark">
                 <tr style="text-align: center;">
                     <th style="text-align: center;">Rank</th>
-                    <th style="text-align: left;">Team</th>
+                    <th style="text-align: left;">Team (Job ID)</th>
                     <th style="text-align: left;">Score (%)</th>
                     <th style="text-align: left;">Finished</th>
                 </tr>
@@ -261,9 +261,9 @@ function update_leaderboard(data) {
     const leaderboard = [];
     scores = data.results;
     scores.forEach(entry => {
-        const { team, score, finished, rank } = entry;
+        const { team, score, finished, rank, job_id } = entry;
         const team_name = team.replace("team", "Team ");
-        leaderboard.push({ team: team_name, score, finished, rank });
+        leaderboard.push({ team: team_name, score, finished, rank, job_id });
     });
     // leaderboard.sort(compare_leaderboard);
     const tbody = document.getElementById('leaderboard-body');
@@ -304,7 +304,7 @@ function update_leaderboard(data) {
         const row = document.createElement('tr');
         row.innerHTML = `
         <td style="text-align: center; ${bold}">${medal}${rank}${hidden_medal}</td>
-        <td style="${bold}">${entry.team}</td>
+        <td style="${bold}">${entry.team} (${entry.job_id})</td>
         <td style="${bold}">${entry.score}.00</td>
         <td style="${bold}">${entry.finished}</td>
         `;
